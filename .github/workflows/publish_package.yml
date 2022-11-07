@@ -29,3 +29,5 @@ jobs:
       run: dotnet pack -c Release OVB.Infrascructure.CrossCutting.DesignPatterns.Abstractions/OVB.Infrascructure.CrossCutting.DesignPatterns.Abstractions.csproj /p:Version='${{ github.event.inputs.version }}' --include-symbols --include-source
     - name: Publish
       run: dotnet nuget push **/*${{ github.event.inputs.version }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+    - name: Publish On Github
+      run: dotnet nuget push **/*${{ github.event.inputs.version }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source "github"
